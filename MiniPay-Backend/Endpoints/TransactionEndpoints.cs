@@ -16,7 +16,8 @@ namespace MiniPay_Backend.Endpoints
 
             app.MapPost("/deleteTransaction", (string id) 
                 => DeleteTransaction(id)).WithTags(EndpointTag);
-        }      
+        }
+        
         private static List<Transaction>? GetTransactions(int? providerId)
         {
             var transactions = TransactionStorage.GetStoredTransactions();

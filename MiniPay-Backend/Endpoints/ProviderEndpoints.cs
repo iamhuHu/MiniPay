@@ -19,7 +19,8 @@ namespace MiniPay_Backend.Endpoints
 
             app.MapPost("/editProvider", (Provider provider) 
                 => EditProvider(provider)).WithTags(EndpointTag);
-        }      
+        }
+        
         private static List<Provider>? GetProviders()
         {
             return ProviderStorage.GetStoredProviders();
