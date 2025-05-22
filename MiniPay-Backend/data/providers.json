@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Provider_A",
+    "isActive": true,
+    "endpointUrl": "https://provider_a_api.com",
+    "description": "some description for Provider A",
+    "supportedCurrencies": [
+      0,
+      2
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Provider_B",
+    "isActive": true,
+    "endpointUrl": "https://provider_b_api.com",
+    "description": "random text B",
+    "supportedCurrencies": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Provider_C",
+    "isActive": false,
+    "endpointUrl": "https://provider_c.com",
+    "description": "new one",
+    "supportedCurrencies": [
+      0,
+      2
+    ]
+  }
+]

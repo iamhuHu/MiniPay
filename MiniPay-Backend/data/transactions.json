@@ -1,0 +1,68 @@
+[
+  {
+    "id": "48d3f5ff-56a1-4375-ac94-805b1ed5e3e4",
+    "providerId": 1,
+    "amount": 10.45,
+    "currency": 0,
+    "description": null,
+    "status": "success",
+    "timestamp": "2025-05-22T11:34:51.613539+02:00",
+    "message": "Provider_A",
+    "referenceId": "a5965eae-8313-4901-94ab-9d8e0c48d83d"
+  },
+  {
+    "id": "f04465f9-59b6-4bc2-a139-d541e1a1dcb9",
+    "providerId": 1,
+    "amount": 20,
+    "currency": 2,
+    "description": null,
+    "status": "success",
+    "timestamp": "2025-05-22T11:35:16.2362798+02:00",
+    "message": "Provider_A",
+    "referenceId": "ac12109e-6dfd-40cf-8414-f45b2ed52f6e"
+  },
+  {
+    "id": "1e3eb52f-d7c9-41ff-a0bb-d5d5afe62499",
+    "providerId": 2,
+    "amount": 15,
+    "currency": 2,
+    "description": "desc B init",
+    "status": "success",
+    "timestamp": "2025-05-22T11:37:09.2989176+02:00",
+    "message": "Provider_B",
+    "referenceId": "16af0f23-f148-4d16-a47e-93c31618b315"
+  },
+  {
+    "id": "4371bcba-a46a-4f3b-85ec-d417b318e999",
+    "providerId": 2,
+    "amount": 15.55,
+    "currency": 2,
+    "description": "random",
+    "status": "success",
+    "timestamp": "2025-05-22T11:39:10.1188544+02:00",
+    "message": "Provider_B",
+    "referenceId": "ec79ff4d-860f-463c-a818-22dadd1a22ca"
+  },
+  {
+    "id": "df524097-cf0c-4e29-9af3-c048e8f9de26",
+    "providerId": 1,
+    "amount": 100,
+    "currency": 0,
+    "description": null,
+    "status": "failed",
+    "timestamp": "2025-05-22T11:39:36.8469416+02:00",
+    "message": "Provider_A",
+    "referenceId": "e634f47f-c092-4ccf-a887-d41a53f73b3c"
+  },
+  {
+    "id": "e3b6ee51-823c-49af-9369-5e7b239c691b",
+    "providerId": 1,
+    "amount": 100,
+    "currency": 0,
+    "description": null,
+    "status": "success",
+    "timestamp": "2025-05-22T11:39:43.3994066+02:00",
+    "message": "Provider_A",
+    "referenceId": "d15db796-3241-4d67-b093-aa843b468855"
+  }
+]

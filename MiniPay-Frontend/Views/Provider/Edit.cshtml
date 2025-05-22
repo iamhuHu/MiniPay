@@ -1,0 +1,28 @@
+﻿@using MiniPay_Contracts
+@model ProviderModel
+
+@{
+    ViewData["Title"] = "Edit Provider";
+}
+
+<h1>Edit</h1>
+<h4>Provider</h4>
+<hr />
+<div>
+    <div>
+        <form asp-action="Edit">
+            <div>
+                <label asp-for="Id"></label>
+                <input asp-for="Id" readonly="readonly" class="form-control" />              
+            </div>
+            @await Html.PartialAsync("_ProviderFields", Model)
+            <div>
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

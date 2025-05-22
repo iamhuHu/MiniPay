@@ -1,0 +1,57 @@
+﻿@using MiniPay_Contracts
+@model List<Provider>
+@{
+    ViewData["Title"] = "Providers";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Provider</h1>
+
+    <a class="btn btn-primary" asp-action="create">Create new provider</a>
+
+    @if (!Model.Any())
+    {
+        <br />
+        <strong>no providers available</strong>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">IsActive</th>
+                    <th scope="col">Description</th>                    
+                    <th scope="col">Payment-Url</th>
+                    <th scope="col">Currencies</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Provider provider in Model)
+                {
+                    <tr>
+                        <th scope="row"><a asp-controller="Transactions" asp-action="create" asp-route-id="@provider.Id">@provider.Name</a></th>
+                        <td>@provider.IsActive</td>
+                        <td>@provider.Description</td>                        
+                        <td>@provider.EndpointUrl</td>
+                        <td>
+                            @if(provider.CurrenciesAllowed != null)
+                            {
+                                <ul>
+                                    @foreach (var currency in provider.CurrenciesAllowed)
+                                    {
+                                        <li>@currency</li>
+                                    }
+                                </ul>
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="edit" asp-route-Id="@provider.Id">Edit</a>
+                        </td>                 
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

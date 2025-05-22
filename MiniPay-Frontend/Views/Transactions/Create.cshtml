@@ -1,0 +1,85 @@
+﻿@using MiniPay_Contracts
+@model TransactionModel
+
+@{
+    ViewData["Title"] = "Create Transaction";
+}
+
+<h1>Create</h1>
+<h4>Transaction</h4>
+<hr />
+
+@if (Model.AllowedProviders == null || Model.AllowedProviders.Count == 0)
+{
+    <br />
+    <strong>no provider available</strong>
+    <br />
+    <div>
+        <a asp-controller="Provider" asp-action="Index">Create Provider</a>
+    </div>
+}
+else
+{
+    <div>
+        <div>
+            <form asp-action="Create">
+                <div>
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class="form-control" type="number" max="10000.00" step="any" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" class="form-control" />                   
+                </div>
+                <div>             
+                    <label asp-for="SelectedProvider">Provider</label>
+                    <select asp-for="SelectedProvider" class="form-select" asp-items='@new SelectList(Model.AllowedProviders, "Id", "Name", Model.SelectedProvider)' onchange="setAvailableCurrencies()"></select>                    
+                </div>
+                <div>
+                    <label asp-for="Currency">Currency</label>
+                    <select asp-for="Currency" class="form-select" asp-items="@Html.GetEnumSelectList<Currency>()"></select>                    
+                </div>
+                <div>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div>
+        <a asp-action="Index">Back to Transactions-List</a>
+    </div>
+}
+
+@section scripts {
+    <script>
+        $(function() {        
+            setAvailableCurrencies();
+        });
+
+        function setAvailableCurrencies() {           
+            var providerId = $('#SelectedProvider').val();
+            if(providerId === undefined)
+            {
+                return;
+            }
+            var selCurrencies = $("#Currency");
+            $.ajax({
+                url: '/Provider/GetAvailableCurrencies',
+                type: "GET",
+                dataType: "JSON",
+                data: { providerId: providerId },
+                success: function (currencies) {                    
+                    selCurrencies.html("");                  
+                    $.each(currencies.currenciesDict, function(item, index) {                       
+                        selCurrencies.append($('<option></option>').text(item).val(index));
+                    });
+                },
+                error: function () {
+                    alert("getavailablecurrencies failed");
+                }
+            });
+        }
+    </script>
+}

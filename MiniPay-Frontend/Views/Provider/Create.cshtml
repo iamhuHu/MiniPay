@@ -1,0 +1,24 @@
+﻿@using MiniPay_Contracts
+@model ProviderModel
+
+@{
+    ViewData["Title"] = "Create Provider";
+}
+
+<h1>Create</h1>
+<h4>Provider</h4>
+<hr />
+<div>
+    <div>
+        <form asp-action="Create">           
+            @await Html.PartialAsync("_ProviderFields", Model)         
+            <div>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to Provider-List</a>
+</div>

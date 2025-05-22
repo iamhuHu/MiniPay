@@ -1,0 +1,26 @@
+﻿@using MiniPay_Contracts
+@model ProviderModel
+
+<div>
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="EndpointUrl"></label>
+    <input asp-for="EndpointUrl" class="form-control" />
+    <span asp-validation-for="EndpointUrl" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="Description"></label>
+    <input asp-for="Description" class="form-control" />
+</div>
+<div>
+    <label asp-for="CurrenciesAllowed">Currencies</label>
+    <select asp-for="CurrenciesAllowed" class="form-control" asp-items="@Html.GetEnumSelectList<Currency>()"></select>
+</div>
+<div>
+    <label>
+        <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+    </label>
+</div>

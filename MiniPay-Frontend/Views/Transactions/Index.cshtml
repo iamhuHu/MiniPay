@@ -1,0 +1,75 @@
+﻿@using MiniPay_Contracts
+@model TransactionExtViewModel
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Transactions</h1>
+
+    <a class="btn btn-primary" asp-action="create" asp-route-Id="@Model.SelectedProvider">Create new @Model.ProviderNameSelected transaction</a>
+
+    <div style="padding:10px">
+        <label asp-for="SelectedProvider">Provider</label>
+        <select id="selectProvider" asp-items="@Model.ProviderListSelection"></select>        
+    </div>    
+
+    @if (Model.TransactionList == null || !Model.TransactionList.Any())
+    {
+        <br />
+        <strong>no transactions for @Model.ProviderNameSelected available</strong>
+    }
+    else
+    {          
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Provider</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Id</th>                                   
+                    <th scope="col">Amount</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Transaction transaction in Model.TransactionList)
+                {                    
+                    var providerName = "unknown";
+                    var provider = Model.ProviderList?.FirstOrDefault(d => d.Id == transaction.ProviderId);
+                    if (provider != null)
+                    {
+                        providerName = provider.Name;
+                    }                    
+                    <tr>
+                        <td>@providerName</td>
+                        <td>@transaction.Timestamp</td>
+                        <td>@transaction.Status</td>
+                        <td>@transaction.Description</td>
+                        <td>@transaction.Id</td>                                             
+                        <td>@transaction.Amount</td>
+                        <td>@transaction.Currency</td>
+                        <td>
+                            <a class="btn btn-danger" 
+                                asp-action="delete" 
+                                asp-route-Id="@transaction.Id"
+                                onClick = "return confirm('are you sure to delete this transaction?')">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@section scripts {
+    <script>
+        $('#selectProvider').change(function() {
+            window.location = "transactions?providerid=" + $(this).val();
+        });
+    </script>
+}
