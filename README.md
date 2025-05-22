@@ -1,3 +1,3 @@
 # MiniPay
 
-run front - and backend simultaneously
+run front- and backend simultaneously
